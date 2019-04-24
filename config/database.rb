@@ -1,5 +1,5 @@
 configure :test do
-  set :database, 
+  set :database,
       adapter: 'postgresql',
       encoding: 'utf8',
       database: 'onebitbot_test',
