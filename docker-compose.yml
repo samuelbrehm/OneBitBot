@@ -3,26 +3,8 @@ version: '3'
 services:
   postgres:
     image: 'postgres:9.5'
-    environment:
-      POSTGRES_PASSWORD: "docker"
-    ports:
-      - "5432:5432"
     volumes:
       - 'postgres:/var/lib/postgresql/data'
-    networks:
-      - postgres-compose-network
-
-  pgadmin-compose:
-    image: dpage/pgadmin4
-    environment:
-      PGADMIN_DEFAULT_EMAIL: "samuelbrehm@gmail.com"
-      PGADMIN_DEFAULT_PASSWORD: "docker"
-    ports:
-      - "16543:80"
-    depends_on:
-      - postgres
-    networks:
-      - postgres-compose-network
 
   website:
     depends_on:
@@ -34,10 +16,6 @@ services:
       - '.:/onebitbot'
     environment:
       - LANG=C.UTF-8
-
-networks:
-  postgres-compose-network:
-    driver: bridge
 
 volumes:
   postgres:
